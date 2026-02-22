@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
-import { Upload, Play, Pause, Square, Volume2, VolumeX, SkipBack, SkipForward, Maximize } from "lucide-react";
+import { Upload, Play, Pause, Square, Volume2, VolumeX, SkipBack, SkipForward, Maximize, Sparkles, Download } from "lucide-react";
 import { Timeline } from "@/components/Timeline";
 import { EffectsPanel } from "@/components/EffectsPanel";
 import { AIAssistant } from "@/components/AIAssistant";
+import { ExportPanel } from "@/components/ExportPanel";
 
 interface VideoClip {
   id: string;
@@ -384,17 +385,33 @@ export function VideoEditor() {
 
           <div className="space-y-4">
             <Tabs defaultValue="effects" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-slate-900/50">
+              <TabsList className="grid w-full grid-cols-3 bg-slate-900/50">
                 <TabsTrigger value="effects">Efectos</TabsTrigger>
-                <TabsTrigger value="ai">IA</TabsTrigger>
+                <TabsTrigger value="ai">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Asistente IA
+                </TabsTrigger>
+                <TabsTrigger value="export">
+                  <Download className="w-4 h-4 mr-2" />
+                  Exportar
+                </TabsTrigger>
               </TabsList>
               
               <TabsContent value="effects" className="mt-4">
                 <EffectsPanel />
               </TabsContent>
               
-              <TabsContent value="ai" className="mt-4">
-                <AIAssistant />
+              <TabsContent value="ai" className="mt-0 h-full">
+                <AIAssistant
+                  onApplyAI={(type) => console.log("Applying AI:", type)}
+                />
+              </TabsContent>
+              
+              <TabsContent value="export" className="mt-0 h-full">
+                <ExportPanel
+                  duration={duration}
+                  onExport={(settings) => console.log("Exporting:", settings)}
+                />
               </TabsContent>
             </Tabs>
           </div>
