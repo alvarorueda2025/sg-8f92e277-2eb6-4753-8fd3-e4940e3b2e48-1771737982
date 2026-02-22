@@ -11,7 +11,7 @@ import {
   VolumeX,
   Music,
   Mic,
-  Waveform,
+  Activity,
   Settings2,
   Download,
   Play,
@@ -296,7 +296,7 @@ export function AudioMixer() {
                 onClick={() => addTrack("sfx")}
                 className="flex-1 bg-blue-600 hover:bg-blue-700"
               >
-                <Waveform className="w-4 h-4 mr-2" />
+                <Activity className="w-4 h-4 mr-2" />
                 SFX
               </Button>
             </div>
@@ -319,7 +319,7 @@ export function AudioMixer() {
                       <div className="flex items-center gap-2 mb-1">
                         {track.type === "voice" && <Mic className="w-4 h-4 text-purple-400 flex-shrink-0" />}
                         {track.type === "music" && <Music className="w-4 h-4 text-pink-400 flex-shrink-0" />}
-                        {track.type === "sfx" && <Waveform className="w-4 h-4 text-blue-400 flex-shrink-0" />}
+                        {track.type === "sfx" && <Activity className="w-4 h-4 text-blue-400 flex-shrink-0" />}
                         <span className="text-sm font-medium text-white truncate">{track.name}</span>
                       </div>
                       <Badge variant="outline" className="text-xs border-slate-600">

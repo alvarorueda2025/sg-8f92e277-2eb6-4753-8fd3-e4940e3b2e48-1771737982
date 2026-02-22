@@ -8,6 +8,7 @@ import { Timeline } from "@/components/Timeline";
 import { EffectsPanel } from "@/components/EffectsPanel";
 import { AIAssistant } from "@/components/AIAssistant";
 import { ExportPanel } from "@/components/ExportPanel";
+import { AudioMixer } from "@/components/AudioMixer";
 
 interface VideoClip {
   id: string;
@@ -385,11 +386,15 @@ export function VideoEditor() {
 
           <div className="space-y-4">
             <Tabs defaultValue="effects" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-slate-900/50">
+              <TabsList className="grid w-full grid-cols-4 bg-slate-900/50">
                 <TabsTrigger value="effects">Efectos</TabsTrigger>
+                <TabsTrigger value="audio">
+                  <Volume2 className="w-4 h-4 mr-2" />
+                  Audio
+                </TabsTrigger>
                 <TabsTrigger value="ai">
                   <Sparkles className="w-4 h-4 mr-2" />
-                  Asistente IA
+                  IA
                 </TabsTrigger>
                 <TabsTrigger value="export">
                   <Download className="w-4 h-4 mr-2" />
@@ -399,6 +404,10 @@ export function VideoEditor() {
               
               <TabsContent value="effects" className="mt-4">
                 <EffectsPanel />
+              </TabsContent>
+              
+              <TabsContent value="audio" className="mt-0 h-[calc(100vh-12rem)]">
+                <AudioMixer />
               </TabsContent>
               
               <TabsContent value="ai" className="mt-0 h-full">
